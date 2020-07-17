@@ -1,0 +1,134 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block main_container %}
+
+
+<div class="col-md-12 py-3 px-4 main-container">
+
+	<h4>{{request.user.first_name}} {{request.user.last_name}} Estos son los nexos relacionados con el paciente</h4>
+		<div class="row text-right">
+		<div class="col-md-7"></div>
+		<div class="col-md-5">
+			<button class="btn btn-info" data-toggle="modal" data-target="#agregar-nexo-modal">
+				Agregar Nexo<i class="fas fa-plus-circle"></i>
+			</button>
+		</div>
+	</div>
+	<div class="row mt-4 justify-content-md-center">
+
+		<table class="table table-hover col-12">
+			<thead>
+				<tr class="d-flex bg-primary text-white text-center">
+					<th class="col-1">N°</th>
+					<th class="col-1">Nombre</th>
+					<th class="col-2">Apellido</th>
+					<th class="col-2">Sexo</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for caso in casos %}
+				<tr class="d-flex text-center">
+					<td class="col-1 font-weight-bold">{{ forloop.counter }}</td>
+					<td class="col-1 font-weight-bold">{{caso.nombre_sospechoso}}</td>
+					<td class="col-2">{{caso.apellido_sospechoso}}</td>
+					<td class="col-2">
+						{% if caso.sexo_sospechoso == True %}
+							Mujer
+						{% else %}
+							Hombre
+						{% endif %}
+					</td>
+				</tr>
+				{% empty %}
+				<tr>
+					<td colspan="6">
+						<h4>Aun no registras nexos para este paciente.</h4>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
+<!-- Modal Agregar Nexo -->
+<div class="modal fade" id="agregar-nexo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+
+	<div class="modal-content">
+	<form action="{% url 'registrar_nexo' %}" method="POST">
+
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo nexo</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<div class="modal-body">
+			<div class="form-group row d-none">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="cuadro-id" name="cuadro_id" value="{{cuadros.idCuadroMedico}}">
+						</div>
+			</div>
+			<div class="form-group row">
+				<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="nombre" name="nombre" placeholder="" required="">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="apellido" name="apellido" placeholder="" required="">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="dui" class="col-sm-2 col-form-label">DUI</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="dui" name="dui" placeholder="" required="">
+				</div>
+			</div>
+
+
+    		<div class="form-group row">
+      			<label for="fecha_propuesta" class="col-sm-2 col-form-label" >Sexo: </label>
+      			<div class="col-sm-10">
+      				<select name="sexo" id="sexo" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        			<option selected required="">Seleccione..</option>
+        			<option value="0">Masculino</option>
+        			<option value="1">Femenino</option>
+      				</select>
+      			</div>
+    		</div>
+    		<div class="form-group row">
+				<label for="fecha_propuesta" class="col-sm-2 col-form-label">Fecha de Nacimiento:</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" id="fecha" name="fecha" placeholder="" required="">
+				</div>
+			</div>
+
+			<div class="form-group row justify-content-md-center">
+				
+			</div>
+		</div>
+		
+		<div class="modal-footer">
+			{% csrf_token %}
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			<button type="submit" class="btn btn-primary col-sm-4 col-form-label" id="Registrar">Registrar</button>
+		</div>
+
+	</form>
+	</div>
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/vehiculos/vehiculos.js' %}"></script>
+{% endblock %}
