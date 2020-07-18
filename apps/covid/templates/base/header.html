@@ -38,16 +38,16 @@
 					<span class="btn btn-success" id="btn-login">
 						{{request.user.first_name}}&nbsp;&nbsp;&nbsp; ツ &nbsp;
 						{% if request.user.rol == 0 %}
-							Doctor&nbsp;&nbsp;<i class="fas fa-user-tie"></i>
+							Doctor&nbsp;&nbsp;<i class="fas fa-user-tie animated infinite bounce pulse"></i>
 						{% elif request.user.rol == 1 %}
-							Labatorista&nbsp;&nbsp;<i class="fas fa-user-ninja"></i>
+							Laboratorista&nbsp;&nbsp;<i class="fas fa-user-ninja animated infinite bounce pulse"></i>
 						{% elif request.user.rol == 2%}
-							MINSAL&nbsp;&nbsp;<i class="fas fa-user-check"></i>
+							MINSAL&nbsp;&nbsp;<i class="fas fa-user-check animated infinite bounce pulse"></i>
 						{% else %}
 						{% endif %}
 						
 					</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="{% url 'logout' %}" class="btn btn-danger">Salir&nbsp;&nbsp;&nbsp;<i class="fas fa-running"></i></a>
+					<a href="{% url 'logout' %}" class="btn btn-danger">Salir&nbsp;&nbsp;&nbsp;<i class="fas fa-running animated infinite bounce pulse"></i></a>
 				{% endif %}
 			</form>
 

@@ -9,19 +9,19 @@
 
 			{% if request.user.rol == 0 %}
 			<!-- Vista para Admin -->
-			<h3>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
-			<p class="float-right p-carousel">&#8212;&nbsp;Doctor</p>
+			<h3 class="animated bounce animate__swing">{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
+			<p class="float-right p-carousel animated infinite bounce pulse">&#8212;&nbsp;Doctor</p>
 			{% elif request.user.rol == 1 %}
 			<!-- Vista para Técnico -->
-			<h3>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
-			<p class="float-right p-carousel">&#8212;&nbsp;Laboratorista</p>
+			<h3 class="animated bounce animate__swing">{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
+			<p class="float-right p-carousel animated infinite bounce pulse">&#8212;&nbsp;Laboratorista</p>
 			{% elif request.user.rol == 2 %}
 			<!-- Vista para Cliente -->
-			<h3>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
-			<p class="float-right p-carousel">&#8212;&nbsp;MINSAL</p>
+			<h3 class="animated bounce animate__swing ">{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
+			<p class="float-right p-carousel animated infinite bounce pulse">&#8212;&nbsp;MINSAL</p>
 			{% else %}
 			<!-- Vista para Visitante -->
-			<h2 class="animated infinite bounce pulse">COVID SV</h2>
+			<h2 class="animated infinite bounce jello">COVID SV</h2>
 			{% endif %}
 
 
@@ -73,7 +73,9 @@
 		<!-- Vista para Visitante -->
 			<h2 class="animated pulse" style="color: blue;">¡Somos tu mejor opción en todo lo que respecta a pruebas de COVID-19!</h2>
 			<center>
-				<h1>Trabajando en el desarrollo del sitio...</h1>
+				<h1>INFORMACIÓN SOBRE COVID-19: </h1>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/tCPq2IVM5Mg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<img class="animated infinite bounce pulse" src="https://images.vexels.com/media/users/3/193093/isolated/preview/83f23fec75cc6474e19d33a4bec06d7d-covid-19-iconos-de-virus-by-vexels.png" width="50%">
 			</center>
 	{% endif %}
 
