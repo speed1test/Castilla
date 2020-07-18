@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'covidsv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql_cymysql',
-        'NAME': 'covid19',
-        'USER': 'hdp115',
-         'PASSWORD': 'Covid19HDP115',
-        'HOST': 'covidsv.tk',
+        'NAME': 'final',
+        'USER': 'prueba',
+         'PASSWORD': 'prueba',
+        'HOST': 'propositocovid.duckdns.org',
         'PORT':3306,
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
