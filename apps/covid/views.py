@@ -102,3 +102,78 @@ def pruebas_resumen_genero_sospechosos(request):
 	
 	finalrep = listsort(finalrep) 
 	return JsonResponse({'pruebas_resumen_genero_sospechosos':finalrep},safe=False)
+
+def pruebas_departamento(request):
+	porResultado =CuadroMedico.objects.all()
+	finalrep ={}
+	dep1 = 0
+	dep2 = 0
+	dep3 = 0
+	dep4 = 0
+	dep5 = 0
+	dep6 = 0
+	dep7 = 0
+	dep8 = 0
+	dep9 = 0
+	dep10 = 0
+	dep11 = 0
+	dep12 = 0
+	dep13 = 0
+	dep14 = 0
+
+	for item in porResultado:
+		if ((item.paciente.localidad.departamento.idDepartamento  == 1) and (item.estado_paciente == 1)):		
+			dep1 = dep1 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 2) and (item.estado_paciente == 1)):
+			dep2 = dep2 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 3) and (item.estado_paciente == 1)):
+			dep3 = dep3 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 4) and (item.estado_paciente == 1)):
+			dep4 = dep4 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 5) and (item.estado_paciente == 1)):
+			dep5 = dep5 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 6) and (item.estado_paciente == 1)):
+			dep6 = dep6 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 7) and (item.estado_paciente == 1)):
+			dep7 = dep7 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 8) and (item.estado_paciente == 1)):
+			dep8 = dep8 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 9) and (item.estado_paciente == 1)):
+			dep9 = dep9 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 10) and (item.estado_paciente == 1)):
+			dep10 = dep10 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 11) and (item.estado_paciente == 1)):
+			dep11 = dep11 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 12) and (item.estado_paciente == 1)):
+			dep12 = dep12 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 13) and (item.estado_paciente == 1)):
+			dep13 = dep13 + 1
+		if ((item.paciente.localidad.departamento.idDepartamento  == 14) and (item.estado_paciente == 1)):
+			dep14 = dep14 + 1
+
+	finalrep["Chalatenango"]=dep1
+	finalrep["Cuscatlán"]=dep2
+	finalrep["San Salvador"]=dep3
+	finalrep["La Libertad"]=dep4
+	finalrep["San Vicente"]=dep5
+	finalrep["Cabañas"]=dep6
+	finalrep["La Paz"]=dep7
+	finalrep["Santa Ana"]=dep8
+	finalrep["Usulután"]=dep9
+	finalrep["San Miguel"]=dep10
+	finalrep["Morazán"]=dep11
+	finalrep["La Unión"]=dep12
+	finalrep["Ahuachapán"]=dep13
+	finalrep["Sonsonate"]=dep14
+
+	def listsort(value):
+		if isinstance(value,dict):
+			new_dict = SortedDict()
+			key_list = value.keys()
+			key_list=sorted(key_list)
+			for key in key_list:
+				new_dict[key] = value[key]
+			return new_dict
+	
+	finalrep = listsort(finalrep) 
+	return JsonResponse({'pruebas_departamento':finalrep},safe=False)
